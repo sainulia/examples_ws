@@ -43,6 +43,9 @@ CTestTestfile.cmake
 _deps
 
 build/
+.vscode/
+CMakeUserPresets.json
+
 
 [Bb][Uu][Ii][Ll][Dd]/
 

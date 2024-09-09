@@ -1,0 +1,8 @@
+conan new cmake_exe -d name=<Poject_name> -d version=1.0
+
+conan install . -s build_type=Debug                       //default profile
+conan install . -s build_type=Debug -pr <profile_name>
+
+conan profile list  //show list of profiles
+
+conan profile new mynewprofile --detect

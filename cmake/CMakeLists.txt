@@ -17,7 +17,8 @@ if(EMAKE_USE_ADDER)
     # list(APPEND EMAKE_LIBS Adder)
     message("-- Adder build ON")
 endif()
-# include_directories(Adder)
+
+
 add_executable(add src/numbers_add.cpp)
 target_link_libraries(add Adder)
 
