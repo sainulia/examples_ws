@@ -1,8 +1,20 @@
 conan new cmake_exe -d name=<Poject_name> -d version=1.0
 
-conan install . -s build_type=Debug                       //default profile
-conan install . -s build_type=Debug -pr <profile_name>
+conan install . -s build_type=Debug                                         //default profile
+conan install . -s build_type=Debug -pr <profile_name> --build missing      //with profile and if prebuilt missing
 
-conan profile list  //show list of profiles
+conan profile list                                                          //show list of profiles
 
-conan profile new mynewprofile --detect
+
+
+
+
+:::::::::::::::::profile for gcc::::::::::::::
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=20
+compiler.version=4.9
+compiler.libcxx=libstdc++11
+os=Windows

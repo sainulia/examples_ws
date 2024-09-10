@@ -23,10 +23,10 @@ class EMakeRecipe(ConanFile):
     def layout(self):
         cmake_layout(self)
 
-    # def requirements(self):
-    #     self.requires("catch2/3.4.0")
-    #     self.requires("fmt/10.1.1")
-    #     self.requires("sfml/2.6.1")
+    def requirements(self):
+        self.requires("catch2/3.4.0")
+        self.requires("fmt/10.1.1")
+        self.requires("sfml/2.6.1")
 
     def generate(self):
         deps = CMakeDeps(self)

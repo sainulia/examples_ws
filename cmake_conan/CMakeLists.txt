@@ -7,8 +7,8 @@ add_executable(EMake src/main.cpp)
 
 
 
-install(TARGETS EMake DESTINATION "."
-        RUNTIME DESTINATION bin
-        ARCHIVE DESTINATION lib
-        LIBRARY DESTINATION lib
-        )
+# install(TARGETS EMake DESTINATION "."
+#         RUNTIME DESTINATION bin
+#         ARCHIVE DESTINATION lib
+#         LIBRARY DESTINATION lib
+#         )
