@@ -17,7 +17,11 @@ endif()
 
 
 add_executable(add src/numbers_add.cpp)
-target_link_libraries(add Adder)
+# target_sources(add INTERFACE 
+#     FILE_SET HEADERS
+#     BASE_DIRS ${PROJECT_SOURCE_DIR}/build
+#     FILES build/EMAKEConfig.h)
+target_link_libraries(add PUBLIC Adder)
 
 
 
@@ -26,9 +30,7 @@ find_package(Doxygen REQUIRED)
 if(NOT DOXYGEN_FOUND)
   message(FATAL_ERROR "Doxygen is needed to build the documentation. Please install it on your system")
   else()
-     message(STATUS "Doxygen found.")
-
-     
+     message(STATUS "Doxygen found.")    
      file(DOWNLOAD https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/v2.3.1/doxygen-awesome.css
      ${CMAKE_BINARY_DIR}/doxygen-awesome.css)
      file(DOWNLOAD https://raw.githubusercontent.com/jothepro/doxygen-awesome-css/v2.3.1/doxygen-awesome-sidebar-only.css
@@ -46,8 +48,16 @@ if(NOT DOXYGEN_FOUND)
      list(APPEND DOXYGEN_HTML_EXTRA_STYLESHEET ${CMAKE_BINARY_DIR}/doxygen-awesome-sidebar-only.css)
 
      doxygen_add_docs(documentation ${PROJECT_SOURCE_DIR}/Adder/include COMMENT "Generating documentation")
-
-
 endif()
 
+# message("${PROJECT_SOURCE_DIR}")
 
+
+install(TARGETS add FILE_SET HEADERS)
+install(FILES build/EMAKEConfig.h DESTINATION include)
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/License.txt")
+set(CPACK_PACKAGE_VERSION_MAJOR "${EMAKE_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${EMAKE_VERSION_MINOR}")
+include(CPack)
+message("${EMAKE_VERSION_MAJOR}")
